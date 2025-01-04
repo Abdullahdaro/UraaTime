@@ -9,20 +9,29 @@ import TransferCards from "@/components/Transfer/TransferCards";
 export default function SearchPage({featuredProduct, newProducts}) {
   return (
     <div>
-      <Header />
+    <Header />
+    <div style={{ textAlign: "center" }}>
       <SearchBar />
-      <TransferCards
-        product={{
-          name: featuredProduct.name,
-          quantity: 1,
-          type: featuredProduct.type,
-          passengers: featuredProduct.passengers,
-          price: featuredProduct.price,
-          image: featuredProduct.image,
-        }}
-      />
-      <Footer />
     </div>
+    <div style={{ display: "flex" }}>
+      <div style={{ width: "33%" }}>
+        {/* Filter section */}
+      </div>
+      <div style={{ width: "67%" }}>
+        <TransferCards
+          product={{
+            name: featuredProduct.name,
+            quantity: 1,
+            type: featuredProduct.type,
+            passengers: featuredProduct.passengers,
+            price: featuredProduct.price,
+            image: featuredProduct.image,
+          }}
+        />
+      </div>
+    </div>
+    <Footer />
+  </div>
   );
 }
 
