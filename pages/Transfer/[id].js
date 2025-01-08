@@ -3,22 +3,40 @@ import Header from "@/components/Header";
 import {mongooseConnect} from "@/lib/mongoose";
 import TransferCards from "@/components/Transfer/TransferCards";
 import { Product } from "@/models/Product"; 
+import Footer from "@/components/Footer";
+import RolesofTransfer from "@/components/Transfer/RolesofTransfer";
+
 
 export default function TransferPage({product}) {
+  console.log(product);
+
+  if (!product) return <div>Loading...</div>;
+
   return (  
     <>
       <Header />
       <Center>
         <TransferCards 
             product={{
-                name: product.title,
-                quantity: 1,
-                type: product.type,
-                passengers: product.passengers,
-                price: product.price,
-                image: product.images,
-                }} /> 
+              title: product.title,
+              quantity: 1,
+              type: product.type,
+              passengers: product.passengers,
+              price: product.price,
+              image: product.images,
+            }} /> 
       </Center>
+
+      <div className="border-t border-gray-200 my-8"></div>
+      <RolesofTransfer />
+      <Center>
+        <div className="min-h-[300px]">
+          <h2>Second Section</h2>
+        </div>
+      </Center>
+      
+      
+      <Footer />
     </>
   );
 }
@@ -26,10 +44,10 @@ export default function TransferPage({product}) {
 export async function getServerSideProps(context) {
   await mongooseConnect();
   const {id} = context.query;
-  const transfer = await Product.findById(id);
+  const product = await Product.findById(id);
   return {
     props: {
-      transfer: JSON.parse(JSON.stringify(transfer)),
+      product: JSON.parse(JSON.stringify(product)),
     }
   }
 }
