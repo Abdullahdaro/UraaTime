@@ -130,12 +130,12 @@ export default function SearchPage({ featuredProduct, newProducts }) {
             <Link href={`/Transfer/${product._id}`} key={product._id}>
               <TransferCards
                 product={{
-                  name: product.name,
+                  name: product.title,
                   quantity: 1,
                   type: product.type,
                   passengers: product.passengers,
                   price: product.price,
-                  image: product.image,
+                  image: product.images,
                 }}
               />
             </Link>

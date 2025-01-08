@@ -5,14 +5,14 @@ export default function TransferCards({ product }) {
     <div style={styles.cardContainer}>
       <div style={styles.imageContainer}>
         <img
-          src={product.image}
-          alt={product.name}
+          src={product.images}
+          alt={product.title}
           style={styles.image}
         />
       </div>
       <div style={styles.detailsContainer}>
         <h3 style={styles.title}>
-          {product.name} x {product.quantity}
+          {product.title} x {product.quantity}
         </h3>
         <p style={styles.detail}>
           <span style={styles.icon}>🚗</span> Type of the Transfer:{" "}
