@@ -5,6 +5,7 @@ import { mongooseConnect } from "@/lib/mongoose";
 import SearchBar from "@/components/SearchBar";
 import TransferCards from "@/components/Transfer/TransferCards";
 import { useState } from "react";
+import Link from 'next/link';
 
 export default function SearchPage({ featuredProduct, newProducts }) {
   const [filters, setFilters] = useState({
@@ -126,17 +127,18 @@ export default function SearchPage({ featuredProduct, newProducts }) {
         {/* Transfer Cards Section */}
         <div className="w-2/3 p-2.5">
           {newProducts.map((product) => (
-            <TransferCards
-              key={product._id}
-              product={{
-                name: product.name,
-                quantity: 1,
-                type: product.type,
-                passengers: product.passengers,
-                price: product.price,
-                image: product.image,
-              }}
-            />
+            <Link href={`/Transfer/${product._id}`} key={product._id}>
+              <TransferCards
+                product={{
+                  name: product.name,
+                  quantity: 1,
+                  type: product.type,
+                  passengers: product.passengers,
+                  price: product.price,
+                  image: product.image,
+                }}
+              />
+            </Link>
           ))}
         </div>
       </div>
