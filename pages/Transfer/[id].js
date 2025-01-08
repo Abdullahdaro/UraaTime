@@ -5,6 +5,19 @@ import TransferCards from "@/components/Transfer/TransferCards";
 import { Product } from "@/models/Product"; 
 import Footer from "@/components/Footer";
 import RolesofTransfer from "@/components/Transfer/RolesofTransfer";
+import styled from 'styled-components'
+
+const Header3 = styled.div`
+  font-family: 'Volkhov';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 28px;
+  text-transform: capitalize;
+  color: #222222;
+`;
+
+
 
 
 export default function TransferPage({product}) {
@@ -31,10 +44,19 @@ export default function TransferPage({product}) {
       <RolesofTransfer />
       <Center>
         <div className="min-h-[300px]">
-          <h2>Second Section</h2>
+          <h2>Details</h2>
         </div>
       </Center>
-      
+      <Header3>Description</Header3>
+      <p>{product.description}</p>
+      <div className=" my-8">
+        <Header3>Inclusions</Header3>
+        <p>{product.inclusions}</p>
+        <Header3>Exclusions</Header3>
+        <p>{product.exclusions}</p>
+      </div>
+
+
       
       <Footer />
     </>
