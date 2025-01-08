@@ -55,9 +55,22 @@ export default function TransferPage({product}) {
         <Header3>Exclusions</Header3>
         <p>{product.exclusions}</p>
       </div>
-
-
-      
+      <div className="border-t border-gray-200 my-8">
+        <Header3>Details</Header3>
+        <p>{product.language}</p>
+        <p>{product.duration}</p>
+        <p>{product.number_of_passengers}</p>
+        <p>{product.meeting_point}</p>
+        <p>{product.google_map_link}</p>
+      </div>
+      <div className="border-t border-gray-200 my-8">
+        <Header3>Cancellation Policy</Header3>
+        <p>{product.cancellation_policy}</p>
+      </div>
+      <div className="border-t border-gray-200 my-8">
+        <Header3>Reviews</Header3>
+        <p>{product.reviews}</p>
+      </div>
       <Footer />
     </>
   );
