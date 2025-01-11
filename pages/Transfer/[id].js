@@ -6,6 +6,7 @@ import { Product } from "@/models/Product";
 import Footer from "@/components/Footer";
 import RolesofTransfer from "@/components/Transfer/RolesofTransfer";
 import styled from 'styled-components'
+import FromCardTransfer from "@/components/Transfer/FromCardTransfer";
 
 const Header3 = styled.div`
   font-family: 'Volkhov';
@@ -39,6 +40,7 @@ export default function TransferPage({product}) {
               image: product.images,
             }} /> 
       </Center>
+      <FromCardTransfer />  
 
       <div className="border-t border-gray-200 my-8"></div>
       <RolesofTransfer />
