@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const FormContainer = styled.div`
+const TransferFormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -12,7 +12,7 @@ const FormContainer = styled.div`
   border-radius: 35px;
 `;
 
-const SectionTitle = styled.div`
+const TransferSectionTitle = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -28,27 +28,27 @@ const SectionTitle = styled.div`
   font-weight: 400;
 `;
 
-const FormSection = styled.div`
+const TransferFormSection = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
   width: 100%;
 `;
 
-const FormGroup = styled.div`
+const TransferFormGroup = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
   width: 100%;
 `;
 
-const FormLabel = styled.label`
+const TransferFormLabel = styled.label`
   font-size: 16px;
   font-weight: 400;
   color: #37387b;
 `;
 
-const FormInput = styled.input`
+const TransferFormInput = styled.input`
   width: 100%;
   height: 48px;
   background: rgba(255, 255, 255, 0.5);
@@ -59,17 +59,17 @@ const FormInput = styled.input`
   color: #545f71;
 `;
 
-const FormRow = styled.div`
+const TransferFormRow = styled.div`
   display: flex;
   gap: 10px;
   width: 100%;
 `;
 
-const FormInputHalf = styled(FormInput)`
+const TransferFormInputHalf = styled(TransferFormInput)`
   width: calc(50% - 5px);
 `;
 
-const SubmitButton = styled.button`
+const TransferSubmitButton = styled.button`
   width: 100%;
   height: 48px;
   background: #37387b;
@@ -84,47 +84,47 @@ const SubmitButton = styled.button`
 
 export default function FormComponent() {
   return (
-    <FormContainer>
-      <SectionTitle>Directions</SectionTitle>
-      <FormSection>
-        <FormGroup>
-          <FormLabel>From:</FormLabel>
-          <FormInput type="text" placeholder="Drop off location" />
-        </FormGroup>
-        <FormRow>
-          <FormInputHalf type="text" placeholder="Airbnb" />
-          <FormInputHalf type="text" placeholder="Hotel" />
-        </FormRow>
-        <FormGroup>
-          <FormLabel>Address:</FormLabel>
-          <FormInput type="text" placeholder="Name of hotel" />
-        </FormGroup>
-      </FormSection>
+    <TransferFormContainer>
+      <TransferSectionTitle>Directions</TransferSectionTitle>
+      <TransferFormSection>
+        <TransferFormGroup>
+          <TransferFormLabel>From:</TransferFormLabel>
+          <TransferFormInput type="text" placeholder="Drop off location" />
+        </TransferFormGroup>
+        <TransferFormRow>
+          <TransferFormInputHalf type="text" placeholder="Airbnb" />
+          <TransferFormInputHalf type="text" placeholder="Hotel" />
+        </TransferFormRow>
+        <TransferFormGroup>
+          <TransferFormLabel>Address:</TransferFormLabel>
+          <TransferFormInput type="text" placeholder="Name of hotel" />
+        </TransferFormGroup>
+      </TransferFormSection>
 
-      <SectionTitle>Passenger Information</SectionTitle>
-      <FormSection>
-        <FormGroup>
-          <FormLabel>Name & Surname:</FormLabel>
-          <FormInput type="text" placeholder="John Wick" />
-        </FormGroup>
-        <FormGroup>
-          <FormLabel>Email:</FormLabel>
-          <FormInput type="email" placeholder="john.wick@email.com" />
-        </FormGroup>
-        <FormRow>
-          <FormInputHalf type="text" placeholder="Code" />
-          <FormInputHalf type="text" placeholder="Enter your phone number" />
-        </FormRow>
-        <FormGroup>
-          <FormLabel>Flight Code:</FormLabel>
-          <FormInput type="text" placeholder="TK 0000" />
-        </FormGroup>
-        <FormGroup>
-          <FormLabel>Date:</FormLabel>
-          <FormInput type="text" placeholder="02 Sep 2023, 00:00" />
-        </FormGroup>
-      </FormSection>
-      <SubmitButton>Complete the payment</SubmitButton>
-    </FormContainer>
+      <TransferSectionTitle>Passenger Information</TransferSectionTitle>
+      <TransferFormSection>
+        <TransferFormGroup>
+          <TransferFormLabel>Name & Surname:</TransferFormLabel>
+          <TransferFormInput type="text" placeholder="John Wick" />
+        </TransferFormGroup>
+        <TransferFormGroup>
+          <TransferFormLabel>Email:</TransferFormLabel>
+          <TransferFormInput type="email" placeholder="john.wick@email.com" />
+        </TransferFormGroup>
+        <TransferFormRow>
+          <TransferFormInputHalf type="text" placeholder="Code" />
+          <TransferFormInputHalf type="text" placeholder="Enter your phone number" />
+        </TransferFormRow>
+        <TransferFormGroup>
+          <TransferFormLabel>Flight Code:</TransferFormLabel>
+          <TransferFormInput type="text" placeholder="TK 0000" />
+        </TransferFormGroup>
+        <TransferFormGroup>
+          <TransferFormLabel>Date:</TransferFormLabel>
+          <TransferFormInput type="text" placeholder="02 Sep 2023, 00:00" />
+        </TransferFormGroup>
+      </TransferFormSection>
+      <TransferSubmitButton>Complete the payment</TransferSubmitButton>
+    </TransferFormContainer>
   );
 }
