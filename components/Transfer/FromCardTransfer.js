@@ -7,7 +7,8 @@ const TransferFormContainer = styled.div`
   padding: 29px 20px;
   gap: 16px;
   width: 472px;
-  height: 845px;
+  height: auto;
+  min-height: 845px;
   background: #fff1da;
   border-radius: 35px;
 `;
@@ -19,13 +20,15 @@ const TransferSectionTitle = styled.div`
   align-items: center;
   padding: 0 10px;
   gap: 4px;
-  width: 116px;
+  width: auto;
+  min-width: 116px;
   height: 22px;
   background: rgba(55, 56, 123, 0.5);
   border-radius: 90px;
   color: #ffffff;
   font-size: 20px;
   font-weight: 400;
+  white-space: nowrap;
 `;
 
 const TransferFormSection = styled.div`
@@ -57,6 +60,14 @@ const TransferFormInput = styled.input`
   padding: 0 15px;
   font-size: 16px;
   color: #545f71;
+  &::placeholder {
+    color: #545f71;
+    opacity: 0.7;
+  }
+  &:focus {
+    outline: none;
+    border-color: #37387b;
+  }
 `;
 
 const TransferFormRow = styled.div`
@@ -80,6 +91,13 @@ const TransferSubmitButton = styled.button`
   font-weight: 600;
   text-align: center;
   cursor: pointer;
+  transition: background-color 0.2s ease;
+  &:hover {
+    background: #2a2b5d;
+  }
+  &:active {
+    transform: translateY(1px);
+  }
 `;
 
 export default function FormComponent() {

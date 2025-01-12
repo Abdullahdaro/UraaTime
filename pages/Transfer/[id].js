@@ -40,39 +40,45 @@ export default function TransferPage({product}) {
               image: product.images,
             }} /> 
       </Center>
-      <FromCardTransfer />  
-
-      <div className="border-t border-gray-200 my-8"></div>
-      <RolesofTransfer />
+      
       <Center>
-        <div className="min-h-[300px]">
-          <h2>Details</h2>
+        <div className="flex gap-8 relative">
+          <div className="flex-grow">
+            <RolesofTransfer />
+            <div className="min-h-[300px]">
+              <h2>Details</h2>
+            </div>
+            <Header3>Description</Header3>
+            <p>{product.description}</p>
+            <div className="my-8">
+              <Header3>Inclusions</Header3>
+              <p>{product.inclusions}</p>
+              <Header3>Exclusions</Header3>
+              <p>{product.exclusions}</p>
+            </div>
+            <div className="border-t border-gray-200 my-8">
+              <Header3>Details</Header3>
+              <p>{product.language}</p>
+              <p>{product.duration}</p>
+              <p>{product.number_of_passengers}</p>
+              <p>{product.meeting_point}</p>
+              <p>{product.google_map_link}</p>
+            </div>
+            <div className="border-t border-gray-200 my-8">
+              <Header3>Cancellation Policy</Header3>
+              <p>{product.cancellation_policy}</p>
+            </div>
+            <div className="border-t border-gray-200 my-8">
+              <Header3>Reviews</Header3>
+              <p>{product.reviews}</p>
+            </div>
+          </div>
+          
+          <div className="w-[380px] sticky top-4 h-fit">
+            <FromCardTransfer />
+          </div>
         </div>
       </Center>
-      <Header3>Description</Header3>
-      <p>{product.description}</p>
-      <div className=" my-8">
-        <Header3>Inclusions</Header3>
-        <p>{product.inclusions}</p>
-        <Header3>Exclusions</Header3>
-        <p>{product.exclusions}</p>
-      </div>
-      <div className="border-t border-gray-200 my-8">
-        <Header3>Details</Header3>
-        <p>{product.language}</p>
-        <p>{product.duration}</p>
-        <p>{product.number_of_passengers}</p>
-        <p>{product.meeting_point}</p>
-        <p>{product.google_map_link}</p>
-      </div>
-      <div className="border-t border-gray-200 my-8">
-        <Header3>Cancellation Policy</Header3>
-        <p>{product.cancellation_policy}</p>
-      </div>
-      <div className="border-t border-gray-200 my-8">
-        <Header3>Reviews</Header3>
-        <p>{product.reviews}</p>
-      </div>
       <Footer />
     </>
   );
