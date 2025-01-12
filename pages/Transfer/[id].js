@@ -43,7 +43,7 @@ export default function TransferPage({product}) {
       
       <Center>
         <div className="flex gap-8 relative">
-          <div className="flex-grow">
+          <div className=" w-4/6">
             <RolesofTransfer />
             <div className="min-h-[300px]">
               <h2>Details</h2>
