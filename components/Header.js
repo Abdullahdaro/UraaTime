@@ -129,7 +129,7 @@ export default function Header() {
             <NavLink href="/">Home</NavLink>
             <NavLink href="/hotels">Hotels</NavLink>
             <NavLink href="/transfer">Transfer</NavLink>
-            <NavLink href="/packages">Our Packages</NavLink>
+            <NavLink href="/tours">Our Packages</NavLink>
             <NavLink href="/new">New</NavLink>
             <NavLink href="/about">About Us</NavLink>
             <NavLink href="/help">Help</NavLink>
