@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function TransferCards({ product }) {
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <div style={styles.cardContainer}>
       <div style={styles.imageContainer}>
@@ -32,7 +34,16 @@ export default function TransferCards({ product }) {
       <div style={styles.priceContainer}>
         <p style={styles.priceLabel}>Total price (per vehicle)</p>
         <p style={styles.price}>${product.price}</p>
-        <button style={styles.bookButton}>Book now</button>
+        <button 
+          style={{
+            ...styles.bookButton,
+            backgroundColor: isHovered ? "#f39c12" : "#f1c40f",
+          }}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          Book now
+        </button>
         <p style={styles.taxesNote}>All Taxes & Fees included</p>
       </div>
     </div>
