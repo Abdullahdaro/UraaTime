@@ -17,14 +17,14 @@ const StyledHeader = styled.header`
 
 const Logo = styled(Link)`
   position: relative;
-  width: 100px;
+  width: 220px;
   z-index: 3;
 `;
 
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  padding: 15px 0;
+  padding: 10px 0;
   justify-content: space-between;
   align-items: center;
 `;
@@ -82,11 +82,6 @@ const ProfilePhotoButton = styled.button`
   background: url('/womenLogIn.svg') no-repeat center center/cover;
   cursor: pointer;
 `;
-
-/* const ArrowDownIcon = styled(ArrowIcon)`
-  margin-left: 10px;
-  cursor: pointer;
-`; */
 
 const DropdownList = styled.ul`
   position: absolute;
