@@ -96,10 +96,10 @@ export default function Featured({product}) {
       <BgImage src="background.jpg" alt="background" className=""/>
       <Center>
           <div>
-            <div className="justify-center align-center items-center flex flex-col">
+            <div className="justify-center align-center items-center flex flex-col mt-10">
             <SearchBar/>
               <h2 className="text-[48px] text-secondary font-volkhov">We Find The Best Tours For You </h2>
-              <p className="items-center justify-center text-center">Amet minim mollit non deserunt ullamco est sit aliqua dolor do amet sint. <br/> Velit officia consequat duis enim velit mollit. Exercitation veniam consequat sunt nostrud amet.</p>
+              <p className="items-center justify-center text-center m-2 mb-4">We connect you to the best tours and experiences<br/>ensuring memories that last a lifetime</p>
             </div>
             <div className="flex justify-between gap-x-[10px]">
               <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#FFFBA3] text-black shadow-md p-2 px-[30px] gap-[20px] h-[80px]"> 

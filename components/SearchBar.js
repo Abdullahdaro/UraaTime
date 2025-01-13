@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+
 
 export default function SearchBar() {
   const [city, setCity] = useState('');
   const [people, setPeople] = useState('');
   const [dates, setDates] = useState('');
+  const router = useRouter();
 
   const handleSearch = () => {
+
     // Handle search logic here
-    console.log({ city, people, dates });
+    router.push(`/SearchPages/SearchPage`);
   };
 
   return (

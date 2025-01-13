@@ -6,7 +6,7 @@ import SearchBar from "@/components/SearchBar";
 import TransferCards from "@/components/Transfer/TransferCards";
 import { useState } from "react";
 import Link from 'next/link';
-
+import Center from "@/components/Center";
 export default function SearchPage({ featuredProduct, newProducts }) {
   const [filters, setFilters] = useState({
     meetAndGreet: false,
@@ -29,7 +29,8 @@ export default function SearchPage({ featuredProduct, newProducts }) {
   return (
     <div>
       <Header />
-      <div className="flex flex-col items-center justify-center">
+      <Center>
+      <div className="flex flex-col items-center justify-center mt-20">
         <SearchBar className="flex text-center" />
       </div>
       <div className="flex p-5">
@@ -142,6 +143,7 @@ export default function SearchPage({ featuredProduct, newProducts }) {
           ))}
         </div>
       </div>
+      </Center> 
       <Footer />
     </div>
   );
