@@ -2,14 +2,23 @@ import React, { useState } from "react";
 
 export default function TransferCards({ product }) {
   const [isHovered, setIsHovered] = useState(false);
+  
+  // Add these console logs to debug
+  console.log("Product:", product);
+  console.log("First image:", `${process.env.NEXT_PUBLIC_API_URL}${product.image}`);
 
   return (
     <div style={styles.cardContainer}>
       <div style={styles.imageContainer}>
         <img
-          src={product.images}
+          src={`${process.env.NEXT_PUBLIC_API_URL}${product.image?.[0]}`}
           alt={product.title}
-          style={styles.image}
+          style={{
+            ...styles.image,
+            width: '200px',  // Add explicit width
+            height: '150px', // Add explicit height
+            objectFit: 'cover' // Ensure image covers the area properly
+          }}
         />
       </div>
       <div style={styles.detailsContainer}>
