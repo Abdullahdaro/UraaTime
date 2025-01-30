@@ -11,13 +11,22 @@ const StyledProductsGrid = styled.div`
   }
 `;
 
-export default function CityGrid({products}) {
+export default function CityGrid({categories, currentPage, setCurrentPage}) {
+  const citiesPerPage = 4;
+  
+  // Calculate total pages
+  const totalPages = Math.ceil((categories?.length || 0) / citiesPerPage);
+  
+  // Get current cities
+  const indexOfLastCity = currentPage * citiesPerPage;
+  const indexOfFirstCity = indexOfLastCity - citiesPerPage;
+  const currentCities = categories?.slice(indexOfFirstCity, indexOfLastCity);
+
   return (
     <StyledProductsGrid>
-{/*       {products?.length > 0 && products.map(product => (
-        <CityCard key={product._id} {...product} />
-      ))}. */}
-      <CityCard />
+      {currentCities?.map(category => (
+        <CityCard key={category._id} {...category} />
+      ))}
     </StyledProductsGrid>
   );
 }

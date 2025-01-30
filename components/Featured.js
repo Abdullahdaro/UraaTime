@@ -77,18 +77,9 @@ const ButtonsWrapper = styled.div`
   margin-top:25px;
 `;
 
-export default function Featured({product}) {
-  console.log('Featured component is called with product:', product);
+export default function Featured({categories}) {
+  console.log("Categories in Featured:", categories);
 
-  const {addProduct} = useContext(CartContext);
-  
-  function addFeaturedToCart() {
-    addProduct(product._id);
-  }
-
-  if (!product) {
-    return <div>Loading...</div>; // You can customize this message
-  }
   // Rest of your component's code
 
   return (
@@ -132,7 +123,7 @@ export default function Featured({product}) {
               </div>
             </div>
           </div>
-          <NewCities/>
+          <NewCities categories={categories} />
       </Center>
     </Bg>
   );
