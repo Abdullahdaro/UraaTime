@@ -14,17 +14,20 @@ const StyledProductsGrid = styled.div`
 export default function CityGrid({categories, currentPage, setCurrentPage}) {
   const citiesPerPage = 4;
   
-  // Calculate total pages
-  const totalPages = Math.ceil((categories?.length || 0) / citiesPerPage);
+  // Filter main categories first
+  const mainCategories = categories?.filter(category => category.parent) || [];
   
-  // Get current cities
+  // Calculate total pages based on filtered categories
+  const totalPages = Math.ceil(mainCategories.length / citiesPerPage);
+  
+  // Get current cities from filtered list
   const indexOfLastCity = currentPage * citiesPerPage;
   const indexOfFirstCity = indexOfLastCity - citiesPerPage;
-  const currentCities = categories?.slice(indexOfFirstCity, indexOfLastCity);
+  const currentCities = mainCategories.slice(indexOfFirstCity, indexOfLastCity);
 
   return (
     <StyledProductsGrid>
-      {currentCities?.map(category => (
+      {currentCities.map(category => (
         <CityCard key={category._id} {...category} />
       ))}
     </StyledProductsGrid>
