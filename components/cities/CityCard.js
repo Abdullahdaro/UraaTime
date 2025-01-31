@@ -11,7 +11,7 @@ export default function CityCard(props) {
           <img 
             src={`${process.env.NEXT_PUBLIC_API_URL}${props.images}`}
             alt={props.name}
-            className="rounded-t-[35px] w-full h-full object-cover" 
+            className="rounded-t-[35px] w-full h-full object-cover lazyload" 
           />
         </div>
         <div className="flex justify-between mt-3 mr-3 ml-3">
@@ -26,9 +26,9 @@ export default function CityCard(props) {
         <div className="ml-3 mt-3 font-mulish text-[14px] leading-[18px] text-white">
           {props.description}
         </div>
-        <div className=" bottom-0 right-0 mr-3 mb-3 font-mulish font-semibold text-[14px] text-[#FFDA32]">
+{/*         <div className=" bottom-0 right-0 mr-3 mb-3 font-mulish font-semibold text-[14px] text-[#FFDA32]">
           Explore
-        </div>
+        </div> */}
       </div>
     </div>
   );
