@@ -12,7 +12,7 @@ import { useRouter } from 'next/router';
 export default function SearchPage({ featuredProduct, newProducts }) {
 
   const router = useRouter();
-  const { city, people, dates } = router.query;
+  const { city } = router.query;
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
@@ -20,7 +20,7 @@ export default function SearchPage({ featuredProduct, newProducts }) {
     if (city) {
       fetchSearchResults();
     }
-  }, [city, people, dates]);
+  }, [city]);
 
   const fetchSearchResults = async () => {
     try {
@@ -179,14 +179,19 @@ export default function SearchPage({ featuredProduct, newProducts }) {
   );
 }
 
-export async function getServerSideProps() {
-  const featuredProductId = '66af42883a8ee35ab52c58c3';
+export async function getServerSideProps(context) {
+  const { city } = context.query;
   await mongooseConnect();
-  const featuredProduct = await Product.findById(featuredProductId);
-  const newProducts = await Product.find({}, null, { sort: { '_id': -1 }, limit: 10 });
+  
+  let query = {};
+  if (city) {
+    query.city = city; // Filter products by city
+  }
+
+  const newProducts = await Product.find(query, null, { sort: { '_id': -1 } });
+  
   return {
     props: {
-      featuredProduct: JSON.parse(JSON.stringify(featuredProduct)),
       newProducts: JSON.parse(JSON.stringify(newProducts)),
     },
   };
