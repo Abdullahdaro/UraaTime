@@ -4,10 +4,35 @@ import { Product } from "@/models/Product";
 import { mongooseConnect } from "@/lib/mongoose";
 import SearchBar from "@/components/SearchBar";
 import TransferCards from "@/components/Transfer/TransferCards";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from 'next/link';
 import Center from "@/components/Center";
+import { useRouter } from 'next/router';
+
 export default function SearchPage({ featuredProduct, newProducts }) {
+
+  const router = useRouter();
+  const { city, people, dates } = router.query;
+  const [searchResults, setSearchResults] = useState([]);
+
+  useEffect(() => {
+    // Only fetch when we have the city parameter
+    if (city) {
+      fetchSearchResults();
+    }
+  }, [city, people, dates]);
+
+  const fetchSearchResults = async () => {
+    try {
+      // Replace with your actual API endpoint
+      const response = await fetch(`/api/search?city=${city}&people=${people}&dates=${dates}`);
+      const data = await response.json();
+      setSearchResults(data);
+    } catch (error) {
+      console.error('Error fetching search results:', error);
+    }
+  };
+  
   const [filters, setFilters] = useState({
     meetAndGreet: false,
     babySeat: false,
@@ -31,12 +56,10 @@ export default function SearchPage({ featuredProduct, newProducts }) {
       <Header />
       <Center>
       <div className="flex flex-col items-center justify-center mt-20">
-        <SearchBar className="flex text-center" />
+        <SearchBar className="flex text-center"  />
       </div>
       <div className="flex p-5">
-        {/* Filter Section */}
         <div className="w-1/4 p-2.5">
-          {/* New Date, Passengers, and Luggage Filters */}
           <div className="mb-4 bg-primary p-5 p-x-10 rounded-lg">
                 <label className="block text-base font-bold mb-1">Date</label>
                 <input
