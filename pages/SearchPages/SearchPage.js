@@ -1,6 +1,7 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Product } from "@/models/Product";
+import { Category } from "@/models/Category";
 import { mongooseConnect } from "@/lib/mongoose";
 import SearchBar from "@/components/SearchBar";
 import TransferCards from "@/components/Transfer/TransferCards";
@@ -183,13 +184,9 @@ export async function getServerSideProps(context) {
   const { city } = context.query;
   await mongooseConnect();
   
-  let query = {};
-  if (city) {
-    query.city = city; // Filter products by city
-  }
+  const category = await Category.findOne({name: city});
+  const newProducts = await Product.find({category: category._id}).sort({ _id: -1 });
 
-  const newProducts = await Product.find(query, null, { sort: { '_id': -1 } });
-  
   return {
     props: {
       newProducts: JSON.parse(JSON.stringify(newProducts)),

@@ -3,10 +3,6 @@ import React, { useState } from "react";
 export default function TransferCards({ product }) {
   const [isHovered, setIsHovered] = useState(false);
   
-  // Add these console logs to debug
-  console.log("Product:", product);
-  console.log("First image:", `${process.env.NEXT_PUBLIC_API_URL}${product.image}`);
-
   return (
     <div style={styles.cardContainer}>
       <div style={styles.imageContainer}>
