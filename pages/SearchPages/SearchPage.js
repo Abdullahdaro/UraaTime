@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Center from "@/components/Center";
 import { useRouter } from 'next/router';
 
-export default function SearchPage({ featuredProduct, newProducts }) {
+export default function SearchPage({ featuredProduct, newProducts, categories }) {
 
   const router = useRouter();
   const { city } = router.query;
@@ -62,7 +62,7 @@ export default function SearchPage({ featuredProduct, newProducts }) {
       <Header />
       <Center>
       <div className="flex flex-col items-center justify-center mt-20">
-        <SearchBar className="flex text-center"  />
+        <SearchBar categories={categories} className="flex text-center"  />
       </div>
       <div className="flex p-5">
         <div className="w-1/4 p-2.5">
@@ -227,13 +227,14 @@ export default function SearchPage({ featuredProduct, newProducts }) {
 export async function getServerSideProps(context) {
   const { city } = context.query;
   await mongooseConnect();
-  
+  const categories = await Category.find({});
   const category = await Category.findOne({name: city});
   const newProducts = await Product.find({category: category._id}).sort({ _id: -1 });
 
   return {
     props: {
       newProducts: JSON.parse(JSON.stringify(newProducts)),
+      categories: JSON.parse(JSON.stringify(categories)),
     },
   };
 }

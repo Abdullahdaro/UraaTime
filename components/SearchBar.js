@@ -7,12 +7,11 @@ export default function SearchBar({categories}) {
   const router = useRouter();
   const { city: urlCity, people: urlPeople, dates: urlDates } = router.query;
   
-  const [city, setCity] = useState(null);
+  const [city, setCity] = useState('');
+  console.log('city', city);
   const [people, setPeople] = useState('');
   const [dates, setDates] = useState('');
   const [isLoading, setIsLoading] = useState(true);
-
-  console.log(categories)
   // Update state when URL parameters change
   useEffect(() => {
     if (urlCity) setCity(urlCity);
@@ -26,7 +25,7 @@ export default function SearchBar({categories}) {
     router.push({
       pathname: '/SearchPages/SearchPage',
       query: {
-        city,
+        city: city.value,
         people,
         dates
       }
