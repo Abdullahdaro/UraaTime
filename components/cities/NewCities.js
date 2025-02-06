@@ -24,7 +24,7 @@ const ArrowButton = styled.button`
   font-size: 1.5rem;
   cursor: pointer;
   padding: 8px;
-  color: #666;
+  color: #FFDA32;
   transition: color 0.2s;
   &:hover {
     color: #FFDA32;

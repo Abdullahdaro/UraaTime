@@ -85,28 +85,32 @@ export default function Featured({categories}) {
               <p className="items-center justify-center text-center m-2 mb-4">We connect you to the best tours and experiences<br/>ensuring memories that last a lifetime</p>
             </div>
             <div className="flex justify-between gap-x-[10px]">
-              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#FFFBA3] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px]"> 
+              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#FFFBA3] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px] 
+                transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer"> 
                 <div className="">
                   <h3 className="font-poppins font-medium text-[23.9422px] leading-[124.5%] tracking-[-0.015em] text-[#080809]">Hotels</h3>
                   <p className="font-poppins font-light text-[14px] leading-[124.5%] tracking-[-0.015em] text-[#080809] order-1 self-stretch flex-none flex-grow-0">120 tours</p>
                 </div>
                 <img src="hotels.jpg" alt="tour" className="rounded-[35px] h-[60px] w-[60px]" />
               </div>
-              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#98D786] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px]"> 
+              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#98D786] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px]
+                transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer"> 
                 <div className="">
                   <h3 className="font-poppins font-medium text-[23.9422px] leading-[124.5%] tracking-[-0.015em] text-[#080809]">Tours</h3>
                   <p className="font-poppins font-light text-[14px] leading-[124.5%] tracking-[-0.015em] text-[#080809] order-1 self-stretch flex-none flex-grow-0">120 tours</p>
                 </div>
                 <img src="tours.jpg" alt="tour" className="rounded-[35px] h-[60px] w-[60px]" />
               </div>
-              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#BBBAF6] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px]"> 
+              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#BBBAF6] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px]
+                transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer"> 
                 <div className="">
                   <h3 className="font-poppins font-medium text-[23.9422px] leading-[124.5%] tracking-[-0.015em] text-[#080809]">Transfers</h3>
                   <p className="font-poppins font-light text-[14px] leading-[124.5%] tracking-[-0.015em] text-[#080809] order-1 self-stretch flex-none flex-grow-0">120 tours</p>
                 </div>
                 <img src="transfers.jpg" alt="transfers" className="rounded-[35px] h-[60px] w-[60px]" />
               </div>
-              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#FF9B9E] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px]"> 
+              <div className="flex justify-between items-center w-[25%] rounded-[25px] bg-[#FF9B9E] text-black shadow-md p-2 px-[20px] gap-[20px] h-[80px]
+                transition-all duration-300 hover:scale-105 hover:shadow-lg hover:-translate-y-1 cursor-pointer"> 
                 <div className="">
                   <h3 className="font-poppins font-medium text-[23.9422px] leading-[124.5%] tracking-[-0.015em] text-[#080809]">Recomendations</h3>
                   <p className="font-poppins font-light text-[14px] leading-[124.5%] tracking-[-0.015em] text-[#080809] order-1 self-stretch flex-none flex-grow-0">120 tours</p>
