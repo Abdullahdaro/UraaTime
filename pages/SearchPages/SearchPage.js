@@ -43,6 +43,11 @@ export default function SearchPage({ featuredProduct, newProducts }) {
     date: '',
     passengers: 1,
     luggage: 1,
+    languageEnglish: false,
+    languageArabic: false,
+    languageFrench: false,
+    languageTurkish: false,
+    languageRussian: false,
   });
 
   const handleFilterChange = (filterName, value) => {
@@ -61,93 +66,132 @@ export default function SearchPage({ featuredProduct, newProducts }) {
       </div>
       <div className="flex p-5">
         <div className="w-1/4 p-2.5">
-          <div className="mb-4 bg-primary p-5 p-x-10 rounded-lg">
-                <label className="block text-base font-bold mb-1">Date</label>
-                <input
-                  type="date"
-                  value={filters.date}
-                  onChange={(e) => handleFilterChange("date", e.target.value)}
-                  className="w-full p-3 border rounded"
-                />
-              <div className="mt-4">
-                <label className="block text-base font-bold mb-1">Number of Passengers</label>
-                <input
-                  type="number"
-                  min="1"
-                  value={filters.passengers}
-                  onChange={(e) => handleFilterChange("passengers", parseInt(e.target.value))}
-                  className="w-full p-3 border rounded"
-                />
-              </div>
-              <div className="mt-4">
-                <label className="block text-base font-bold mb-1">Number of Luggage</label>
-                <input
-                  type="number"
-                  min="0"
-                  value={filters.luggage}
-                  onChange={(e) => handleFilterChange("luggage", parseInt(e.target.value))}
-                  className="w-full p-3 border rounded"
-                />
-              </div>
-          </div>
-
-
-          <div className="mb-4 bg-primary p-5 p-x-10 rounded-lg">
-            <h3 className="text-lg font-bold mb-2">Services</h3>
-            <div className="mb-1">
-              <label className="flex items-center space-x-3">
-                <input
-                  type="checkbox"
-                  checked={filters.meetAndGreet}
-                  onChange={() => handleFilterChange("meetAndGreet")}
-                  className="rounded"
-                />
-                <span className="text-base font-bold">Meet & Greet</span>
-              </label>
-            </div>
-            <div className="mb-1">
-              <label className="flex items-center space-x-3">
-                <input
-                  type="checkbox"
-                  checked={filters.babySeat}
-                  onChange={() => handleFilterChange("babySeat")}
-                  className="rounded"
-                />
+          <div className="mb-4 bg-[#FFF1DA] p-5 p-x-10 rounded-lg">
+            <h3 className="text-lg font-bold mb-2 text-primary">Services</h3>
+            <div className="space-y-4">
+              {/* Baby Seat Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("babySeat")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.babySeat ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.babySeat ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
                 <span className="text-base font-bold">Baby Seat</span>
-              </label>
+              </div>
+
+              {/* Disable Seat Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("disableSeat")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.disableSeat ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.disableSeat ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
+                <span className="text-base font-bold">Disable Seat</span>
+              </div>
+
+              {/* Meet & Greet Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("meetAndGreet")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.meetAndGreet ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.meetAndGreet ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
+                <span className="text-base font-bold">Meet & Greet</span>
+              </div>
             </div>
-            <div className="mb-1">
-              <label className="flex items-center space-x-3">
-                <input
-                  type="checkbox"
-                  checked={filters.disableChair}
-                  onChange={() => handleFilterChange("disableChair")}
-                  className="rounded"
-                />
-                <span className="text-base font-bold">Disable Chair</span>
-              </label>
-            </div>
-            <div className="mb-1">
-              <label className="flex items-center space-x-3">
-                <input
-                  type="checkbox"
-                  checked={filters.arabicSpeaker}
-                  onChange={() => handleFilterChange("arabicSpeaker")}
-                  className="rounded"
-                />
-                <span className="text-base font-bold">Arabic Speaker</span>
-              </label>
-            </div>
-            <div className="mb-1">
-              <label className="flex items-center space-x-3">
-                <input
-                  type="checkbox"
-                  checked={filters.englishSpeaker}
-                  onChange={() => handleFilterChange("englishSpeaker")}
-                  className="rounded"
-                />
-                <span className="text-base font-bold">English Speaker</span>
-              </label>
+          </div>
+          <div className="mb-4 bg-[#FFF1DA] p-5 p-x-10 rounded-lg">
+            <h3 className="text-lg font-bold mb-2 text-primary">Driver Language</h3>
+            <div className="space-y-4">
+              {/* English Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("languageEnglish")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.languageEnglish ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.languageEnglish ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
+                <span className="text-base font-bold">English</span>
+              </div>
+
+              {/* Arabic Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("languageArabic")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.languageArabic ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.languageArabic ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
+                <span className="text-base font-bold">Arabic</span>
+              </div>
+
+              {/* French Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("languageFrench")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.languageFrench ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.languageFrench ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
+                <span className="text-base font-bold">French</span>
+              </div>
+
+              {/* Turkish Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("languageTurkish")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.languageTurkish ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.languageTurkish ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
+                <span className="text-base font-bold">Turkish</span>
+              </div>
+
+              {/* Russian Toggle */}
+              <div className="flex items-center gap-3">
+                <div 
+                  onClick={() => handleFilterChange("languageRussian")}
+                  className={`relative w-14 h-7 rounded-full cursor-pointer transition-colors duration-300 
+                    ${filters.languageRussian ? 'bg-green-500' : 'bg-gray-300'}`}
+                >
+                  <div 
+                    className={`absolute w-6 h-6 bg-white rounded-full top-0.5 left-0.5 transition-transform duration-300 shadow-md
+                      ${filters.languageRussian ? 'transform translate-x-7' : ''}`}
+                  />
+                </div>
+                <span className="text-base font-bold">Russian</span>
+              </div>
             </div>
           </div>
         </div>

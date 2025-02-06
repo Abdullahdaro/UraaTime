@@ -8,11 +8,7 @@ import { ChooseTransfer } from "@/components/homeComponents/ChooseTransfer";
 import TopTours from "@/components/Tours/TopTours";
 import RecommendationsGrid from "@/components/Recommendations/RecommendationsGrid";
 import SendMessages from "@/components/SendMessages";
-import axios from 'axios';
-import CityCard from '../components/cities/CityCard';
-import { useState, useEffect } from 'react';
 import { Category } from "@/models/Category";
-import CityGrid from "@/components/cities/CityGrid";
 
 export default function HomePage({categories}) {
   const mainCategories = categories.filter(category => !category.parent);

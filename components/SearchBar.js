@@ -1,15 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FaMapMarkerAlt, FaUsers, FaCalendarAlt } from 'react-icons/fa';
+import Select from 'react-select';
 
-export default function SearchBar() {
+export default function SearchBar({categories}) {
   const router = useRouter();
   const { city: urlCity, people: urlPeople, dates: urlDates } = router.query;
   
-  const [city, setCity] = useState('');
+  const [city, setCity] = useState(null);
   const [people, setPeople] = useState('');
   const [dates, setDates] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
+  console.log(categories)
   // Update state when URL parameters change
   useEffect(() => {
     if (urlCity) setCity(urlCity);
@@ -38,15 +41,21 @@ export default function SearchBar() {
           <FaMapMarkerAlt className="text-lg" />
           <p>Location</p>
         </div>
-        <label className="flex items-center">
-          <input
-            type="text"
-            placeholder="Enter city name"
-            value={city}
-            onChange={(e) => setCity(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-black"
-          />
-        </label>
+        <Select
+          value={city}
+          onChange={(selectedOption) => setCity(selectedOption)}
+          options={categories
+            .filter(category => category.parent !== null && category.parent !== undefined)
+            .map(category => ({
+              value: category.name,
+              label: category.name
+            }))}
+          className="w-full"
+          classNamePrefix="select"
+          placeholder="Search for a city..."
+          isClearable
+          isSearchable
+        />
       </div>
       {/* Number of People Input */}
       <div className="flex-1 px-2">
@@ -92,3 +101,5 @@ export default function SearchBar() {
     </div>
   );
 }
+
+

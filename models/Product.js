@@ -6,17 +6,16 @@ const ProductSchema = new Schema({
   details: {type:String},
   included: [{type:String}],  // Array of items included
   notIncluded: [{type:String}],  // Array of items not included
-  address: {
-    street: String,
-    city: String,
-    state: String,
-    zipCode: String,
-    country: String
-  },
+  address: {type:String},
   price: {type: Number, required: true},
   images: [{type:String}],
   category: {type:mongoose.Types.ObjectId, ref:'Category'},
   properties: {type:Object},
+  language: [{type:String}],
+  numberOfSeats: {type:String},
+  babySeat: {type:String},
+  disableSeat: {type:String},
+  meetAndGreet: {type:String},
 }, {
   timestamps: true,
 });

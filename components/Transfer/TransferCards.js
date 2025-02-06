@@ -29,12 +29,6 @@ export default function TransferCards({ product }) {
           <span style={styles.icon}>👤</span> Number of passengers:{" "}
           <strong>{product.passengers}</strong>
         </p>
-{/*         <p style={styles.detail}>
-          <span style={styles.icon}>🧳</span> Number of luggage:{" "}
-          <strong>
-            {product.luggage.big} Bigs & {product.luggage.hand} Hand bags
-          </strong>
-        </p> */}
       </div>
       <div style={styles.priceContainer}>
         <p style={styles.priceLabel}>Total price (per vehicle)</p>

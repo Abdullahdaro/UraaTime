@@ -78,8 +78,6 @@ const ButtonsWrapper = styled.div`
 `;
 
 export default function Featured({categories}) {
-  console.log("Categories in Featured:", categories);
-
   // Rest of your component's code
 
   return (
@@ -88,7 +86,7 @@ export default function Featured({categories}) {
       <Center>
           <div>
             <div className="justify-center align-center items-center flex flex-col mt-10">
-            <SearchBar/>
+            <SearchBar categories={categories}/>
               <h2 className="text-[48px] text-secondary font-volkhov">We Find The Best Tours For You </h2>
               <p className="items-center justify-center text-center m-2 mb-4">We connect you to the best tours and experiences<br/>ensuring memories that last a lifetime</p>
             </div>
