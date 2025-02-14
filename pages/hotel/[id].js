@@ -1,8 +1,7 @@
 import Center from "@/components/Center";
 import Header from "@/components/Header";
 import {mongooseConnect} from "@/lib/mongoose";
-import TransferCards from "@/components/Transfer/TransferCards";
-import { Hotels } from "@/models/Hotels"; 
+import {Hotel} from "@/models/Hotels"; 
 import Footer from "@/components/Footer";
 import RolesofTransfer from "@/components/Transfer/RolesofTransfer";
 import styled from 'styled-components'
@@ -32,6 +31,9 @@ export default function TransferPage({hotel}) {
           <h2>Details</h2>
         </div>
       </Center>
+      <div className="flex flex-col items-center justify-center">
+        <h1>{hotel.name}</h1>
+      </div>
       <Header3>Description</Header3>
       <p>{hotel.description}</p>    
       <div className=" my-8">
@@ -64,10 +66,10 @@ export default function TransferPage({hotel}) {
 export async function getServerSideProps(context) {
   await mongooseConnect();
   const {id} = context.query;
-  const hotel = await Hotels.findById(id);
+  const hotel = await Hotel.findById(id);
   return {
     props: {
-      product: JSON.parse(JSON.stringify(product)),
+      hotel: JSON.parse(JSON.stringify(hotel)),
     }
   }
 }
