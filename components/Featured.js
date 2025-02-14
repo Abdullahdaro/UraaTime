@@ -1,7 +1,10 @@
 import Center from "@/components/Center";
 import styled from "styled-components";
 import SearchBar from "./SearchBar";
+import SearchBarHotel from "./SearchBarHotel";
+import SearchBarTour from "./SearchBarTour";
 import NewCities from "./cities/NewCities";
+import { useState } from 'react';
 
 const Bg = styled.div`
   color: #fff;
@@ -72,7 +75,7 @@ const ButtonsWrapper = styled.div`
 `;
 
 export default function Featured({categories}) {
-  // Rest of your component's code
+  const [activeSearch, setActiveSearch] = useState('transfer'); // 'transfer', 'hotel', or 'tour'
 
   return (
     <Bg>
@@ -80,7 +83,44 @@ export default function Featured({categories}) {
       <Center>
           <div>
             <div className="justify-center align-center items-center flex flex-col mt-10">
-            <SearchBar categories={categories}/>
+              <div className="flex align-center justify-center gap-x-[10px] mb-4">
+                <button 
+                  onClick={() => setActiveSearch('transfer')}
+                  className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                    activeSearch === 'transfer' 
+                      ? 'bg-secondary text-white font-bold' 
+                      : 'text-gray-400 hover:text-secondary'
+                  }`}
+                >
+                  Transfer
+                </button>
+                <button 
+                  onClick={() => setActiveSearch('hotel')}
+                  className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                    activeSearch === 'hotel' 
+                      ? 'bg-secondary text-white font-bold' 
+                      : 'text-gray-400 hover:text-secondary'
+                  }`}
+                >
+                  Hotels
+                </button>
+                <button 
+                  onClick={() => setActiveSearch('tour')}
+                  className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                    activeSearch === 'tour' 
+                      ? 'bg-secondary text-white font-bold' 
+                      : 'text-gray-400 hover:text-secondary'
+                  }`}
+                >
+                  Tours
+                </button>
+              </div>
+              
+              {/* Conditional rendering of search components */}
+              {activeSearch === 'transfer' && <SearchBar categories={categories} />}
+              {activeSearch === 'hotel' && <SearchBarHotel categories={categories} />}
+              {activeSearch === 'tour' && <SearchBarTour categories={categories} />}
+
               <h2 className="text-[48px] text-secondary font-volkhov">We Find The Best Tours For You </h2>
               <p className="items-center justify-center text-center m-2 mb-4">We connect you to the best tours and experiences<br/>ensuring memories that last a lifetime</p>
             </div>
@@ -124,3 +164,46 @@ export default function Featured({categories}) {
     </Bg>
   );
 }
+
+
+/* export default function Featured({categories}) {
+  const [activeSearch, setActiveSearch] = useState('transfer'); // 'transfer' or 'hotel'
+
+  return (
+    <Bg>
+      <BgImage src="background.jpg" alt="background" className=""/>
+      <Center>
+          <div>
+            <div className="justify-center align-center items-center flex flex-col mt-10">
+              <div className="flex align-center justify-center gap-x-[10px] mb-4">
+                <button 
+                  onClick={() => setActiveSearch('transfer')}
+                  className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                    activeSearch === 'transfer' 
+                      ? 'bg-secondary text-white font-bold' 
+                      : 'text-gray-400 hover:text-secondary'
+                  }`}
+                >
+                  Transfer
+                </button>
+                <button 
+                  onClick={() => setActiveSearch('hotel')}
+                  className={`px-4 py-2 rounded-lg transition-all duration-300 ${
+                    activeSearch === 'hotel' 
+                      ? 'bg-secondary text-white font-bold' 
+                      : 'text-gray-400 hover:text-secondary'
+                  }`}
+                >
+                  Hotels
+                </button>
+              </div>
+              <SearchBar 
+                categories={categories} 
+                searchType={activeSearch}
+              />
+            </div>
+          </div>
+      </Center>
+    </Bg>
+  );
+} */

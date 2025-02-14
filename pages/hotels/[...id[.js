@@ -1,7 +1,8 @@
 import Center from "@/components/Center";
 import Header from "@/components/Header";
 import {mongooseConnect} from "@/lib/mongoose";
-import { Product } from "@/models/Product"; 
+import TransferCards from "@/components/Transfer/TransferCards";
+import { Hotels } from "@/models/Hotels"; 
 import Footer from "@/components/Footer";
 import RolesofTransfer from "@/components/Transfer/RolesofTransfer";
 import styled from 'styled-components'
@@ -16,10 +17,10 @@ const Header3 = styled.div`
   color: #222222;
 `;
 
-export default function TransferPage({product}) {
-  console.log(product);
+export default function TransferPage({hotel}) {
+  console.log(hotel);
 
-  if (!product) return <div>Loading...</div>;
+  if (!hotel) return <div>Loading...</div>;
 
   return (  
     <>
@@ -32,28 +33,28 @@ export default function TransferPage({product}) {
         </div>
       </Center>
       <Header3>Description</Header3>
-      <p>{product.description}</p>
+      <p>{hotel.description}</p>    
       <div className=" my-8">
         <Header3>Inclusions</Header3>
-        <p>{product.inclusions}</p>
+        <p>{hotel.inclusions}</p>
         <Header3>Exclusions</Header3>
-        <p>{product.exclusions}</p>
+        <p>{hotel.exclusions}</p>
       </div>
       <div className="border-t border-gray-200 my-8">
         <Header3>Details</Header3>
-        <p>{product.language}</p>
-        <p>{product.duration}</p>
-        <p>{product.number_of_passengers}</p>
-        <p>{product.meeting_point}</p>
-        <p>{product.google_map_link}</p>
+        <p>{hotel.language}</p>
+        <p>{hotel.duration}</p>
+        <p>{hotel.number_of_passengers}</p>
+        <p>{hotel.meeting_point}</p>
+        <p>{hotel.google_map_link}</p>
       </div>
       <div className="border-t border-gray-200 my-8">
         <Header3>Cancellation Policy</Header3>
-        <p>{product.cancellation_policy}</p>
+        <p>{hotel.cancellation_policy}</p>
       </div>
       <div className="border-t border-gray-200 my-8">
         <Header3>Reviews</Header3>
-        <p>{product.reviews}</p>
+        <p>{hotel.reviews}</p>
       </div>
       <Footer />
     </>
@@ -63,7 +64,7 @@ export default function TransferPage({product}) {
 export async function getServerSideProps(context) {
   await mongooseConnect();
   const {id} = context.query;
-  const product = await Product.findById(id);
+  const hotel = await Hotels.findById(id);
   return {
     props: {
       product: JSON.parse(JSON.stringify(product)),

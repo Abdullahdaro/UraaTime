@@ -17,7 +17,6 @@ export default function SearchPage({ featuredProduct, newProducts, categories })
   const [searchResults, setSearchResults] = useState([]);
 
   useEffect(() => {
-    // Only fetch when we have the city parameter
     if (city) {
       fetchSearchResults();
     }
