@@ -144,8 +144,6 @@ export async function getServerSideProps(context) {
   const category = await Category.findOne({name: city});
   const hotels = await Hotel.find({category: category?._id}).sort({ _id: -1 });
 
-  console.log(hotels);
-
   return {
     props: {
       hotels: JSON.parse(JSON.stringify(hotels)),

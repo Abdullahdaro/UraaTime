@@ -32,7 +32,7 @@ export default function SearchBarHotel({ categories }) {
     if (!city) return;
 
     router.push({
-      pathname: '/SearchPages/hotelssearchpage',
+      pathname: '/searchpage/hotelssearchpage',
       query: {
         city: city.value,
         people,

@@ -6,6 +6,8 @@ import {CartContext} from "@/components/CartContext";
 import BarsIcon from "@/components/icons/Bars";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
+import { useAuth } from "@/components/AuthContext";
+import { useRouter } from "next/router";
 /* import ArrowIcon from "@/components/icons/ArrowIcon"; */
 
 const StyledHeader = styled.header`
@@ -106,11 +108,19 @@ const DropdownItem = styled.li`
 
 export default function Header() {
   const {cartProducts} = useContext(CartContext);
+  const { user, logout } = useAuth();
   const [mobileNavActive, setMobileNavActive] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const router = useRouter();
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
+  };
+
+  const handleLogout = () => {
+    logout();
+    router.push('/');
+    setDropdownOpen(false);
   };
 
   return (
@@ -122,8 +132,8 @@ export default function Header() {
           </Logo>
           <StyledNav mobileNavActive={mobileNavActive}>
             <NavLink href="/">Home</NavLink>
-            <NavLink href="/hotels">Hotels</NavLink>
-            <NavLink href="/transfer">Transfer</NavLink>
+            <NavLink href="/searchpage/hotelssearchpage">Hotels</NavLink>
+            <NavLink href="/searchpage/searchpage">Transfer</NavLink>
             <NavLink href="/tours">Our Packages</NavLink>
             <NavLink href="/new">New</NavLink>
             <NavLink href="/about">About Us</NavLink>
@@ -133,14 +143,27 @@ export default function Header() {
             <BarsIcon />
           </NavButton>
             <UserProfile>
-              <ProfilePhotoButton onClick={toggleDropdown} src="/logo.svg" />
+              <ProfilePhotoButton onClick={toggleDropdown} />
               <FontAwesomeIcon icon={faCaretDown} style={{ marginLeft: '10px' }} />
               <DropdownList isOpen={dropdownOpen}>
                 <DropdownItem>Profile</DropdownItem>
                 <DropdownItem>Settings</DropdownItem>
-                <DropdownItem>Logout</DropdownItem>
+                <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
               </DropdownList>
             </UserProfile>
+          {user ? (
+            <UserProfile>
+              <ProfilePhotoButton onClick={toggleDropdown} />
+              <FontAwesomeIcon icon={faCaretDown} style={{ marginLeft: '10px' }} />
+              <DropdownList isOpen={dropdownOpen}>
+                <DropdownItem>Profile</DropdownItem>
+                <DropdownItem>Settings</DropdownItem>
+                <DropdownItem onClick={handleLogout}>Logout</DropdownItem>
+              </DropdownList>
+            </UserProfile>
+          ) : (
+            <NavLink href="/auth/login">Login</NavLink>
+          )}
         </Wrapper>
       </Center>
     </StyledHeader>

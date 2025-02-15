@@ -23,7 +23,7 @@ export default function SearchBar({categories}) {
     if (!city) return;
 
     router.push({
-      pathname: '/SearchPages/SearchPage',
+      pathname: '/searchpage/searchpage',
       query: {
         city: city.value,
         people,

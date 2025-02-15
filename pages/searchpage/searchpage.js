@@ -10,7 +10,7 @@ import Link from 'next/link';
 import Center from "@/components/Center";
 import { useRouter } from 'next/router';
 
-export default function SearchPage({ featuredProduct, newProducts, categories }) {
+export default function searchpage({ featuredProduct, newProducts, categories }) {
 
   const router = useRouter();
   const { city } = router.query;
@@ -228,12 +228,21 @@ export async function getServerSideProps(context) {
   await mongooseConnect();
   const categories = await Category.find({});
   const category = await Category.findOne({name: city});
-  const newProducts = await Product.find({category: category._id}).sort({ _id: -1 });
-
-  return {
-    props: {
-      newProducts: JSON.parse(JSON.stringify(newProducts)),
-      categories: JSON.parse(JSON.stringify(categories)),
-    },
-  };
+  if (!category) {
+    const newProducts = await Product.find({}).sort({ _id: -1 });
+    return {
+      props: {
+        newProducts: JSON.parse(JSON.stringify(newProducts)),
+        categories: JSON.parse(JSON.stringify(categories)),
+      },
+    };
+  } else {
+    const newProducts = await Product.find({category: category._id}).sort({ _id: -1 });
+    return {
+      props: {
+        newProducts: JSON.parse(JSON.stringify(newProducts)),
+        categories: JSON.parse(JSON.stringify(categories)),
+      },
+    };
+  }
 }
