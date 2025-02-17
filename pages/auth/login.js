@@ -85,7 +85,7 @@ export default function LoginPage() {
         <Button type="submit">Login</Button>
       </StyledForm>
       <p>
-        Don't have an account? <Link href="/auth/register">Register here</Link>
+        Don&apos;t have an account? <Link href="/auth/register">Register here</Link>
       </p>
     </FormContainer>
   );

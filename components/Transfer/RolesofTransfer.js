@@ -87,7 +87,7 @@ export default function RolesofTransfer() {
           <IconofTransferCard />
           <div>
             <h4>Instant Confirmation</h4>
-            <p>Don't wait for the confirmation!</p>
+            <p>Don&apos;t wait for the confirmation!</p>
           </div>
         </FeatureofTransferCard>
         <FeatureofTransferCard>
